@@ -20,6 +20,7 @@ public class Main {
         Currency euro = currencyService.createCurrency("Euro", 28.68);
         Currency tl = currencyService.createCurrency("Tl", 1.0);
 
+
         Team team = teamService.createTeam("Galatasaray", "GS", "yellow-red",
                 "Okan Buruk", "Dursun Özbek", "Nef Arena", new BigDecimal(10000000),
                 dolar, "Türkiye");
@@ -30,10 +31,10 @@ public class Main {
 
         System.out.println(team.toString());
 
+
         Team team2 = teamService.createTeam("Fenerbahçe", "FB", "yellow-blue",
                 "İsmail Kartal", "Ali Koç", "Kadıköy", new BigDecimal(55000000),
-                dolar, "Türkiye");
-
+                euro, "Türkiye");
 
         teamService.addAwardToTeam(team2, "Turkish Cup", 2023,
                 AwardTypeEnum.CUP, AwardCategory.NATIONAL);
@@ -43,19 +44,18 @@ public class Main {
 
         System.out.println(team.toString());
 
+
         Player player = playerService.createPlayer("Cristiano", "Ronaldo",
                 7, 1985, "Forvet", new BigDecimal(35000000), dolar);
 
         playerService.addTeamToPlayer(player, team);
 
 
-        Transfer transfer = transferService.createTransfer(team, team2, 2020, BigDecimal.valueOf(35000000));
-
+        Transfer transfer = transferService.createTransfer(team, team2, 2020);
         Transfer playerTransfer = transferService.makeTransfer(player, team2, transfer);
 
-        playerService.addTeamToPlayer(player, team);
+
         System.out.println(player.toString());
-        transferService.makeTransfer(player, team2, transfer);
         System.out.println(team);
         System.out.println(team2);
         System.out.println(player);

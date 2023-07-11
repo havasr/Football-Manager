@@ -10,13 +10,12 @@ import java.util.List;
 public class TransferService {
     CurrencyService currencyService = new CurrencyService();
 
-    public Transfer createTransfer(Team fromTeam, Team newTeam, int transferYear, BigDecimal transferPrice) {
+    public Transfer createTransfer(Team fromTeam, Team newTeam, int transferYear) {
 
         Transfer transfer = new Transfer();
         transfer.setFromTeam(fromTeam);
         transfer.setToTeam(newTeam);
         transfer.setYear(transferYear);
-        transfer.setPrice(transferPrice);
 
         return transfer;
     }
@@ -32,6 +31,8 @@ public class TransferService {
             fromTeam.setBudget(fromTeam.getBudget().add
                     (currencyService.exchange(player.getValue(), player.getCurrency(), fromTeam.getCurrency())));
             player.getTeamList().add(newTeam);
+
+            transfer.setPrice(player.getValue());
             transfer.setCurrency(player.getCurrency());
 
             if (player.getTransferHistory() != null) {
