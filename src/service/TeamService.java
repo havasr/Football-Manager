@@ -1,9 +1,6 @@
 package service;
 
-import model.Award;
-import model.AwardCategory;
-import model.AwardTypeEnum;
-import model.Team;
+import model.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -12,7 +9,7 @@ import java.util.List;
 public class TeamService {
 
 public Team createTeam(String teamName, String nickname, String colors, String coach, String president, String stadiumName,
-                       BigDecimal budget, String currency, String country){
+                       BigDecimal budget, Currency currency, String country){
 
   Team team = new Team();
   team.setName(teamName);
@@ -28,11 +25,11 @@ public Team createTeam(String teamName, String nickname, String colors, String c
     return team;
 }
 
-public void addAwardToTeam(Team team, String name, int year, AwardTypeEnum awardTypeEnum, AwardCategory awardCategory){
+public void addAwardToTeam(Team team, String awardName, int year, AwardTypeEnum awardTypeEnum, AwardCategory awardCategory){
 
 
   Award award = new Award();
-  award.setName(name);
+  award.setName(awardName);
   award.setYear(year);
   award.setAwardCategory(awardCategory);
   award.setAwardType(awardTypeEnum);

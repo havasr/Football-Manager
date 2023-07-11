@@ -1,5 +1,6 @@
 package model;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class Player {
@@ -10,6 +11,11 @@ public class Player {
     private String position;
     private List<Transfer> transferHistory;
     private List<Team> teamList;
+
+    private BigDecimal value;
+
+    private Currency currency;
+
 
     public String getName() {
         return name;
@@ -65,5 +71,36 @@ public class Player {
 
     public void setTeamList(List<Team> teamList) {
         this.teamList = teamList;
+    }
+
+    public BigDecimal getValue() {
+        return value;
+    }
+
+    public void setValue(BigDecimal value) {
+        this.value = value;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", kitNumber=" + kitNumber +
+                ", birthYear=" + birthYear +
+                ", position='" + position + '\'' +
+                ", transferHistory=" + transferHistory +
+                ", teamList=" + teamList +
+                ", value=" + value +
+                ", currency='" + currency + '\'' +
+                '}';
     }
 }
